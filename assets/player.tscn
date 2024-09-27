@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://l67hhlq58isn"]
+
+[ext_resource type="Script" path="res://assets/player.gd" id="1_be77x"]
+[ext_resource type="Texture2D" uid="uid://dben047ixb6hy" path="res://assets/temp-art.png" id="2_n1t3l"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_be77x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_n1t3l")
+centered = false
+region_enabled = true
+region_rect = Rect2(128, 0, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
