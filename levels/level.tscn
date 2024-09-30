@@ -40,9 +40,9 @@ script = null
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="WinText" type="Label" parent="HUD"]
-offset_left = -75.0
-offset_top = 75.0
-offset_right = 245.0
-offset_bottom = 259.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 96.0
 text = "You Win!"
 horizontal_alignment = 1
