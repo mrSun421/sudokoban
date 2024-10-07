@@ -8,9 +8,9 @@ const initial_box_positions: Array[Vector2i] = [Vector2i(2, 2), Vector2i(8, 7)]
 const final_box_positions: Array[Vector2i] = [Vector2i(10, 7), Vector2i(10, 5)]
 
 const inputs = {"move_right": Vector2i.RIGHT,
-            "move_left": Vector2i.LEFT,
-            "move_up": Vector2i.UP,
-            "move_down": Vector2i.DOWN}
+			"move_left": Vector2i.LEFT,
+			"move_up": Vector2i.UP,
+			"move_down": Vector2i.DOWN}
 
 
 @onready var background_tilemaplayer := $Background as TileMapLayer
