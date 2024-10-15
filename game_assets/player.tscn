@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://l67hhlq58isn"]
 
-[ext_resource type="Texture2D" uid="uid://cvidppey4c4ce" path="res://assets/player.png" id="1_c4xky"]
+[ext_resource type="Texture2D" uid="uid://cvidppey4c4ce" path="res://art_assets/player.png" id="1_c4xky"]
 
 [node name="Player" type="Node2D"]
 

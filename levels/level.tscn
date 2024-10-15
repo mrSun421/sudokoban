@@ -1,25 +1,25 @@
 [gd_scene load_steps=6 format=3 uid="uid://ene55pesmso4"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ivink"]
-[ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://assets/player.tscn" id="2_pdex0"]
-[ext_resource type="Texture2D" uid="uid://eflltpi7pr52" path="res://assets/background-tiles.png" id="2_t5mw4"]
+[ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://game_assets/player.tscn" id="2_pdex0"]
+[ext_resource type="Texture2D" uid="uid://duqbejqhnx8q6" path="res://art_assets/background-tiles.png" id="2_t5mw4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u53op"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u50ey"]
 texture = ExtResource("2_t5mw4")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
-2:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_75n1t"]
+[sub_resource type="TileSet" id="TileSet_bfdvl"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_u53op")
+sources/0 = SubResource("TileSetAtlasSource_u50ey")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [2, Vector2i(0, 0)], [1, Vector2i(0, 0)], [2, Vector2i(1, 0)]]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ivink")
 
 [node name="Background" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_75n1t")
+tile_set = SubResource("TileSet_bfdvl")
 collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("2_pdex0")]

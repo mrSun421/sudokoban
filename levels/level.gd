@@ -6,6 +6,7 @@ const tile_size = GameVariables.tile_size
 const level_size: Vector2i = Vector2i(12, 10)
 const initial_box_positions: Array[Vector2i] = [Vector2i(2, 2), Vector2i(8, 7)]
 const final_box_positions: Array[Vector2i] = [Vector2i(10, 7), Vector2i(10, 5)]
+var wall_positions: Array[Vector2i] = []
 
 const inputs = {"move_right": Vector2i.RIGHT,
 			"move_left": Vector2i.LEFT,
@@ -21,6 +22,7 @@ const initial_player_position: Vector2i = Vector2i(1, 1)
 var player_position: Vector2i = initial_player_position
 
 var win_state: bool = false
+var wall_scene = preload("res://game_assets/wall.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +35,19 @@ func _ready() -> void:
 	for box_ending_location in final_box_positions:
 		background_tilemaplayer.set_cell(box_ending_location, 0, Vector2i(0, 0))
 
-	
+	# Walls
+	for i in range(level_size.x):
+		wall_positions.append(Vector2i(i, 0))
+		wall_positions.append(Vector2i(i, level_size.y - 1))
+	for i in range(level_size.y):
+		wall_positions.append(Vector2i(0, i))
+		wall_positions.append(Vector2i(level_size.x - 1, i))
+
+	for wall_position in wall_positions:
+		var wall: Node2D = wall_scene.instantiate()
+		wall.position = (wall_position * tile_size).snapped(Vector2i.ONE * tile_size)
+		add_child(wall)
+
 	# Player Initialization
 	player.position = (initial_player_position * tile_size).snapped(Vector2i.ONE * tile_size)
 	
