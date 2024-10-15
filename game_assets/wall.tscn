@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://brl4pv3jw8ky2"]
+
+[ext_resource type="Texture2D" uid="uid://b4ggpv43s58eq" path="res://art_assets/wall.png" id="1_4wreu"]
+[ext_resource type="PackedScene" uid="uid://db5471kx8bgst" path="res://game_assets/interactable_data.tscn" id="2_fgitc"]
+
+[node name="Wall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4wreu")
+centered = false
+
+[node name="InteractableData" parent="." instance=ExtResource("2_fgitc")]
