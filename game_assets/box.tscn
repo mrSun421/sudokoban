@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://w22a81obppru"]
+
+[ext_resource type="Texture2D" uid="uid://ctafavnspxtur" path="res://art_assets/mainsquare.png" id="1_gwlll"]
+[ext_resource type="PackedScene" uid="uid://db5471kx8bgst" path="res://game_assets/interactable_data.tscn" id="2_eephy"]
+
+[node name="box" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_gwlll")
+centered = false
+
+[node name="InteractableData" parent="." instance=ExtResource("2_eephy")]
+pushable = true
+moveable = true
