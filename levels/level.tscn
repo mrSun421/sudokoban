@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ene55pesmso4"]
+[gd_scene load_steps=7 format=3 uid="uid://ene55pesmso4"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ivink"]
 [ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://game_assets/player.tscn" id="2_pdex0"]
 [ext_resource type="Texture2D" uid="uid://duqbejqhnx8q6" path="res://art_assets/background-tiles.png" id="2_t5mw4"]
+[ext_resource type="Script" path="res://levels/interactables.gd" id="3_catja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u50ey"]
 texture = ExtResource("2_t5mw4")
@@ -22,8 +23,6 @@ script = ExtResource("1_ivink")
 tile_set = SubResource("TileSet_bfdvl")
 collision_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("2_pdex0")]
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="WinText" type="Label" parent="HUD"]
@@ -33,3 +32,8 @@ offset_right = 160.0
 offset_bottom = 96.0
 text = "You Win!"
 horizontal_alignment = 1
+
+[node name="Interactables" type="Node" parent="."]
+script = ExtResource("3_catja")
+
+[node name="Player" parent="Interactables" instance=ExtResource("2_pdex0")]
