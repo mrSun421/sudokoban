@@ -3,9 +3,10 @@ extends Node2D
 # TODO: Take this level node and turn it into a class 
 
 const tile_size = GameVariables.tile_size
-const level_size: Vector2i = Vector2i(12, 10)
-const initial_box_positions: Array[Vector2i] = [Vector2i(2, 2), Vector2i(8, 7)]
-const final_box_positions: Array[Vector2i] = [Vector2i(10, 7), Vector2i(10, 5)]
+const level_size: Vector2i = Vector2i(14, 14)
+const initial_box_positions: Array[Vector2i] = [Vector2i(2, 2), Vector2i(8, 7), Vector2i(2, 4), Vector2i(5, 5)]
+const box_values: Array[int] = [1, 1, 2, 2]
+const final_box_positions: Array[Vector2i] = [Vector2i(9, 7), Vector2i(9, 8), Vector2i(6, 7), Vector2i(6, 8)]
 var wall_positions: Array[Vector2i] = []
 
 
@@ -39,15 +40,15 @@ func _ready() -> void:
 		wall_positions.append(Vector2i(0, i))
 		wall_positions.append(Vector2i(level_size.x - 1, i))
 
-	interactables.initialize(initial_player_position, wall_positions, initial_box_positions)
+	interactables.initialize(initial_player_position, wall_positions, initial_box_positions, box_values)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	win_state = check_win()
 	hud.visible = win_state
-		
-
+	
+	
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset_level"):
 		reset_level()

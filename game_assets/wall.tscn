@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://brl4pv3jw8ky2"]
+[gd_scene load_steps=4 format=3 uid="uid://brl4pv3jw8ky2"]
 
 [ext_resource type="Texture2D" uid="uid://b4ggpv43s58eq" path="res://art_assets/wall.png" id="1_4wreu"]
+[ext_resource type="Script" path="res://game_assets/wall.gd" id="1_rofvh"]
+[ext_resource type="PackedScene" uid="uid://cqkw2hdoq4v3x" path="res://game_assets/grid_position_component.tscn" id="2_153ir"]
 
-[node name="Wall" type="Node2D"]
+[node name="Wall" type="Node2D" node_paths=PackedStringArray("grid_position_component")]
+script = ExtResource("1_rofvh")
+grid_position_component = NodePath("GridPositionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_4wreu")
 centered = false
+
+[node name="GridPositionComponent" parent="." instance=ExtResource("2_153ir")]

@@ -33,8 +33,9 @@ offset_bottom = 128.0
 text = "You Win!"
 horizontal_alignment = 1
 
-[node name="Interactables" type="Node" parent="."]
+[node name="Interactables" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_catja")
+player = NodePath("Player")
 
 [node name="Player" parent="Interactables" instance=ExtResource("2_pdex0")]
 
