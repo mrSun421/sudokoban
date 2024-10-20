@@ -11,7 +11,8 @@ var wall_positions: Array[Vector2i] = []
 
 @onready var background_tilemaplayer := $Background as TileMapLayer
 @onready var hud = $HUD as CanvasLayer
-@onready var interactables = $Interactables
+@onready var interactables = $Interactables as Interactables
+@onready var camera = $Camera2D as Camera2D
 
 const initial_player_position: Vector2i = Vector2i(1, 1)
 
@@ -20,6 +21,8 @@ var win_state: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hud.visible = false
+	camera.offset = -(get_viewport().get_visible_rect().size - Vector2(level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2
+
 	# Background Tiles
 	for i in range(level_size.x):
 		for j in range(level_size.y):

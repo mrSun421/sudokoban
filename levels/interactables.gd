@@ -1,4 +1,5 @@
 extends Node
+class_name Interactables
 
 const tile_size = GameVariables.tile_size
 @onready var player := $Player as Node2D

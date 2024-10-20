@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://db5471kx8bgst"]
-
-[ext_resource type="Script" path="res://game_assets/interactable_data.gd" id="1_g2jpy"]
-
-[node name="InteractableData" type="Node"]
-script = ExtResource("1_g2jpy")
