@@ -33,39 +33,57 @@ func _input(event: InputEvent):
 	player.grid_position_component.grid_position = future_player_position
 
 	
-func initialize(initial_player_position, wall_positions, initial_box_positions, box_values):
-	for wall_position in wall_positions:
+func initialize(init_data: LevelInitializationData):
+	for wall_position in init_data.wall_positions:
 		var wall: Wall = wall_scene.instantiate()
 		wall.grid_position_component.grid_position = wall_position
 		add_child(wall)
 		walls.append(wall)
 
-	for index in range(initial_box_positions.size()):
+	for boxdata in init_data.initial_box_data:
 		var box: Box = box_scene.instantiate()
-		box.grid_position_component.grid_position = initial_box_positions[index]
-		box.value = box_values[index]
+		box.grid_position_component.grid_position = boxdata.position
+		box.value = boxdata.value
 		add_child(box)
 		boxes.append(box)
 	
-	player.grid_position_component.grid_position = initial_player_position
+	player.grid_position_component.grid_position = init_data.initial_player_position
 
-func check_win(final_box_positions):
+func check_win(square_data: Array[SquareData]):
 	var current_box_positions = boxes.map(func(e): return e.grid_position_component.grid_position)
+	# unique square check
+	for square_dt in square_data:
+		var positions = square_dt.positions
+		var box_values_on_square: Array[int] = []
+		for pos in positions:
+			var box_index = current_box_positions.find(pos)
+			if box_index < 0:
+				return false
+			else:
+				box_values_on_square.append(boxes[box_index].value)
+
+
+	# row and column check
+	var square_positions_arrays = square_data.map(func(e): return e.positions)
+	var square_positions = []
+	for square_positions_arr in square_positions_arrays:
+		square_positions.append_array(square_positions_arr)
+
 	var solution_boxes_x = {}
 	var solution_boxes_y = {}
 
-	for final_box_position in final_box_positions:
-			var box_index = current_box_positions.find(final_box_position)
+	for square_position in square_positions:
+			var box_index = current_box_positions.find(square_position)
 			if box_index < 0:
 				return false
-			if solution_boxes_x.get(final_box_position.x) != null:
-				solution_boxes_x[final_box_position.x].append(boxes[box_index])
+			if solution_boxes_x.get(square_position.x) != null:
+				solution_boxes_x[square_position.x].append(boxes[box_index])
 			else:
-				solution_boxes_x[final_box_position.x] = [boxes[box_index]]
-			if solution_boxes_y.get(final_box_position.y) != null:
-				solution_boxes_y[final_box_position.y].append(boxes[box_index])
+				solution_boxes_x[square_position.x] = [boxes[box_index]]
+			if solution_boxes_y.get(square_position.y) != null:
+				solution_boxes_y[square_position.y].append(boxes[box_index])
 			else:
-				solution_boxes_y[final_box_position.y] = [boxes[box_index]]
+				solution_boxes_y[square_position.y] = [boxes[box_index]]
 
 	
 	for x_index in solution_boxes_x:
@@ -84,16 +102,17 @@ func check_win(final_box_positions):
 				return false
 			tracker.append(val)
 
-
 	return true
 
 
-func reset_level(initial_player_position, initial_box_positions):
-	for i in range(initial_box_positions.size()):
-		var box = boxes[i]
-		box.grid_position_component.grid_position = initial_box_positions[i]
-	player.grid_position_component.grid_position = initial_player_position
+func reset_level(init_data: LevelInitializationData):
+	initialize(init_data)
 
+func clear_level():
+	for box in boxes:
+		box.queue_free()
+	for wall in walls:
+		wall.queue_free()
 
 func handle_collision(pusher, pushee, current_direction, future_pusher_position):
 	var future_pushee_position = pushee.grid_position_component.grid_position + current_direction

@@ -3,44 +3,33 @@ extends Node2D
 # TODO: Take this level node and turn it into a class 
 
 const tile_size = GameVariables.tile_size
-const level_size: Vector2i = Vector2i(14, 14)
-const initial_box_positions: Array[Vector2i] = [Vector2i(2, 2), Vector2i(8, 7), Vector2i(2, 4), Vector2i(5, 5)]
-const box_values: Array[int] = [1, 1, 2, 2]
-const final_box_positions: Array[Vector2i] = [Vector2i(9, 7), Vector2i(9, 8), Vector2i(6, 7), Vector2i(6, 8)]
-var wall_positions: Array[Vector2i] = []
 
 
-@onready var background_tilemaplayer := $Background as TileMapLayer
-@onready var hud = $HUD as CanvasLayer
-@onready var interactables = $Interactables as Interactables
-@onready var camera = $Camera2D as Camera2D
-
-const initial_player_position: Vector2i = Vector2i(1, 1)
+@export var background_tilemaplayer: TileMapLayer
+@export var hud: CanvasLayer
+@export var interactables: Interactables
+@export var camera: Camera2D
+@export var init_data: LevelInitializationData
 
 var win_state: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hud.visible = false
-	camera.offset = -(get_viewport().get_visible_rect().size - Vector2(level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2
+	camera.offset = -(get_viewport().get_visible_rect().size - Vector2(init_data.level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2
 
 	# Background Tiles
-	for i in range(level_size.x):
-		for j in range(level_size.y):
+	for i in range(init_data.level_size.x):
+		for j in range(init_data.level_size.y):
 			background_tilemaplayer.set_cell(Vector2i(i, j), 0, Vector2i(1, 0))
 	
-	for box_ending_location in final_box_positions:
-		background_tilemaplayer.set_cell(box_ending_location, 0, Vector2i(0, 0))
+	# Square Positions
+	for square in init_data.square_data:
+		for pos in square.positions:
+			background_tilemaplayer.set_cell(pos, 1, Vector2i(square.id - 1, 0))
+			
 
-	# Walls
-	for i in range(level_size.x):
-		wall_positions.append(Vector2i(i, 0))
-		wall_positions.append(Vector2i(i, level_size.y - 1))
-	for i in range(level_size.y):
-		wall_positions.append(Vector2i(0, i))
-		wall_positions.append(Vector2i(level_size.x - 1, i))
-
-	interactables.initialize(initial_player_position, wall_positions, initial_box_positions, box_values)
+	interactables.initialize(init_data)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,9 +44,9 @@ func _input(_event: InputEvent) -> void:
 		return
 	
 func check_win() -> bool:
-	return interactables.check_win(final_box_positions)
+	return interactables.check_win(init_data.square_data)
 
 func reset_level():
 	win_state = false
-	interactables.reset_level(initial_player_position, initial_box_positions)
+	interactables.reset_level(init_data)
 	return
