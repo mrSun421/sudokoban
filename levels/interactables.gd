@@ -106,13 +106,19 @@ func check_win(square_data: Array[SquareData]):
 
 
 func reset_level(init_data: LevelInitializationData):
-	initialize(init_data)
+	for i in range(init_data.initial_box_data.size()):
+		var boxdt = init_data.initial_box_data[i]
+		if i + 1 > boxes.size():
+			var box: Box = box_scene.instantiate()
+			box.grid_position_component.grid_position = boxdt.position
+			box.value = boxdt.value
+			add_child(box)
+			boxes.append(box)
+		else:
+			boxes[i].value = boxdt.value
+			boxes[i].grid_position_component.grid_position = boxdt.position
+	player.grid_position_component.grid_position = init_data.initial_player_position
 
-func clear_level():
-	for box in boxes:
-		box.queue_free()
-	for wall in walls:
-		wall.queue_free()
 
 func handle_collision(pusher, pushee, current_direction, future_pusher_position):
 	var future_pushee_position = pushee.grid_position_component.grid_position + current_direction
