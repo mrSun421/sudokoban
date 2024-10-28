@@ -59,9 +59,11 @@ func check_win(square_data: Array[SquareData]):
 			var box_index = current_box_positions.find(pos)
 			if box_index < 0:
 				return false
+			if box_values_on_square.has(boxes[box_index].value):
+				return false
 			else:
 				box_values_on_square.append(boxes[box_index].value)
-
+				
 
 	# row and column check
 	var square_positions_arrays = square_data.map(func(e): return e.positions)
