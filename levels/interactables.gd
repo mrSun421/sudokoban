@@ -132,6 +132,17 @@ func reset_level(init_data: LevelInitializationData):
 	player.grid_position_component.grid_position = init_data.initial_player_position
 
 
+func clear_level():
+	for box in boxes:
+		remove_child(box)
+		box.queue_free()
+	boxes = []
+	for wall in walls:
+		remove_child(wall)
+		wall.queue_free()
+	walls = []
+
+
 func handle_collision(pusher, pushee, current_direction, future_pusher_position):
 	var future_pushee_position = pushee.grid_position_component.grid_position + current_direction
 
