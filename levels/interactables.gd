@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Interactables
 
 const tile_size = GameVariables.tile_size
@@ -14,8 +14,18 @@ const inputs = {"move_right": Vector2i.RIGHT,
 			"move_up": Vector2i.UP,
 			"move_down": Vector2i.DOWN}
 
+var show_background_tiles: bool = false
 	
-func _input(event: InputEvent):
+func _process(_delta: float):
+	if show_background_tiles:
+		modulate.a = 0.3
+	else:
+		modulate.a = 1.0
+
+func _input(_event: InputEvent):
+	if Input.is_action_just_pressed("show_background_tiles"):
+		show_background_tiles = !show_background_tiles
+
 	var current_direction = Vector2i.ZERO
 	for direction in inputs.keys():
 		if Input.is_action_just_pressed(direction):

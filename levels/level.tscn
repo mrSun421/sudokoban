@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ivink"]
 [ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://game_assets/player.tscn" id="2_pdex0"]
+[ext_resource type="Resource" uid="uid://bg6qty7w0g243" path="res://level_resources/level2.tres" id="2_rf3dt"]
 [ext_resource type="Texture2D" uid="uid://duqbejqhnx8q6" path="res://art_assets/background-tiles.png" id="2_t5mw4"]
-[ext_resource type="Resource" uid="uid://dmck8la6rm0i1" path="res://level_resources/level3.tres" id="2_yhl6c"]
 [ext_resource type="Script" path="res://levels/interactables.gd" id="3_catja"]
 [ext_resource type="Texture2D" uid="uid://y7vom6ji36l0" path="res://art_assets/goal_tiles.png" id="4_olpgq"]
 
@@ -35,7 +35,7 @@ background_tilemaplayer = NodePath("Background")
 hud = NodePath("HUD")
 interactables = NodePath("Interactables")
 camera = NodePath("Camera2D")
-init_data = ExtResource("2_yhl6c")
+init_data = ExtResource("2_rf3dt")
 
 [node name="Background" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_bfdvl")
@@ -51,7 +51,7 @@ offset_bottom = 128.0
 text = "You Win!"
 horizontal_alignment = 1
 
-[node name="Interactables" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="Interactables" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_catja")
 player = NodePath("Player")
 
