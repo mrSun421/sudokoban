@@ -18,10 +18,12 @@ sources/0 = SubResource("TileSetAtlasSource_eirhq")
 [node name="box" type="Node2D" node_paths=PackedStringArray("grid_position_component", "box_tile_map")]
 script = ExtResource("1_ii8iy")
 grid_position_component = NodePath("GridPositionComponent")
-value = 1
 box_tile_map = NodePath("BoxTileMap")
+value = 1
 
 [node name="GridPositionComponent" parent="." instance=ExtResource("3_ubo2l")]
 
 [node name="BoxTileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_fdxkc")
+
+[connection signal="grid_position_changed" from="GridPositionComponent" to="." method="_on_grid_position_component_grid_position_changed"]

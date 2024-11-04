@@ -3,6 +3,5 @@ class_name Player
 
 @export var grid_position_component: GridPositionComponent
 
-
-func _process(delta: float):
+func _on_grid_position_component_grid_position_changed() -> void:
 	position = (grid_position_component.grid_position * GameVariables.tile_size).snapped(Vector2.ONE * GameVariables.tile_size)
