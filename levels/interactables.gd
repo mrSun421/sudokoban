@@ -30,6 +30,7 @@ func _input(_event: InputEvent):
 	for direction in inputs.keys():
 		if Input.is_action_just_pressed(direction):
 			current_direction = inputs[direction]
+			break
 
 	var future_player_position = player.grid_position_component.grid_position + current_direction
 	var wall_index = walls.map(func(e): return e.grid_position_component.grid_position).find(future_player_position)

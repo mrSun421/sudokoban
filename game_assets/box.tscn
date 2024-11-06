@@ -25,3 +25,5 @@ box_tile_map = NodePath("BoxTileMap")
 
 [node name="BoxTileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_fdxkc")
+
+[connection signal="grid_position_changed" from="GridPositionComponent" to="." method="_on_grid_position_component_grid_position_changed"]

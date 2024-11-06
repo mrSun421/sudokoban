@@ -14,3 +14,5 @@ texture = ExtResource("2_gbxf5")
 centered = false
 
 [node name="GridPositionComponent" parent="." instance=ExtResource("2_00e4h")]
+
+[connection signal="grid_position_changed" from="GridPositionComponent" to="." method="_on_grid_position_component_grid_position_changed"]
