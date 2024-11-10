@@ -19,7 +19,7 @@ const level_resource_paths: Array[String] = [
 	"res://level_resources/level2.tres",
 ]
 
-var current_level = 0
+var current_level = 1
 
 
 func _ready() -> void:

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqrbj2o6elam"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_e6cek"]
+[ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/lilypad.png" id="2_u54dt"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6cek")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 377.0
+offset_right = 96.0
+offset_bottom = 478.0
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Lilypad" type="Sprite2D" parent="."]
+position = Vector2(189, 225)
+texture = ExtResource("2_u54dt")
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
