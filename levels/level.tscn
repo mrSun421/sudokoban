@@ -59,3 +59,5 @@ player = NodePath("Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[connection signal="win_state" from="Interactables" to="." method="_on_interactables_win_state"]

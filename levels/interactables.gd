@@ -1,6 +1,8 @@
 extends Node2D
 class_name Interactables
 
+signal win_state
+
 const tile_size = GameVariables.tile_size
 @export var player: Player
 var wall_scene = preload("res://game_assets/wall.tscn")
@@ -23,6 +25,8 @@ func _process(_delta: float):
 		modulate.a = 1.0
 
 func _input(_event: InputEvent):
+	if get_parent().lock_input:
+		return
 	if Input.is_action_just_pressed("show_background_tiles"):
 		show_background_tiles = !show_background_tiles
 
@@ -115,7 +119,7 @@ func check_win(square_data: Array[SquareData]):
 				return false
 			tracker.append(val)
 
-	return true
+	win_state.emit()
 
 
 func reset_level(init_data: LevelInitializationData):

@@ -1,7 +1,5 @@
 extends Node2D
 
-# TODO: Take this level node and turn it into a class 
-
 const tile_size = GameVariables.tile_size
 
 
@@ -11,7 +9,7 @@ const tile_size = GameVariables.tile_size
 @export var camera: Camera2D
 @export var init_data: LevelInitializationData
 
-var win_state: bool = false
+var lock_input: bool = false
 
 const level_resource_paths: Array[String] = [
 	"res://level_resources/level0.tres",
@@ -20,19 +18,18 @@ const level_resource_paths: Array[String] = [
 	"res://level_resources/level3.tres",
 ]
 
-var current_level = 1
-
 
 func _ready() -> void:
 	load_level()
 
 
 func _process(_delta: float) -> void:
-	win_state = check_win()
-	hud.visible = win_state
-	
+	check_win()
+
 	
 func _input(_event: InputEvent) -> void:
+	if lock_input:
+		return
 	if Input.is_action_just_pressed("reset_level"):
 		reset_level()
 		return
@@ -60,10 +57,17 @@ func load_level():
 	interactables.initialize(init_data)
 
 
-func check_win() -> bool:
-	return interactables.check_win(init_data.square_data)
+func check_win():
+	interactables.check_win(init_data.square_data)
 
 func reset_level():
-	win_state = false
 	interactables.reset_level(init_data)
 	return
+
+func _on_interactables_win_state():
+	lock_input = true
+	hud.visible = true
+	await get_tree().create_timer(2.0).timeout
+	lock_input = false
+
+	get_tree().change_scene_to_file("res://menu/level_select.tscn")
