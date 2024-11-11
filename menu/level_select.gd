@@ -10,11 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_button_pressed() -> void:
 	GameVariables.set_level(1)
 	get_tree().change_scene_to_file("res://levels/level.tscn")
-
 
 func _on_button_2_pressed() -> void:
 	GameVariables.set_level(2)

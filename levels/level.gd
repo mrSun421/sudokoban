@@ -45,7 +45,7 @@ func _input(_event: InputEvent) -> void:
 		return
 
 func load_level():
-	var level_data_path = level_resource_paths[current_level]
+	var level_data_path = level_resource_paths[GameVariables.get_level()]
 	var level_init_data = load(level_data_path)
 	init_data = level_init_data
 
