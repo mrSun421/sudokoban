@@ -17,6 +17,7 @@ const level_resource_paths: Array[String] = [
 	"res://level_resources/level0.tres",
 	"res://level_resources/level1.tres",
 	"res://level_resources/level2.tres",
+	"res://level_resources/level3.tres",
 ]
 
 var current_level = 1
