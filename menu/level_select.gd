@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("go_back"):
+		get_tree().change_scene_to_file("res://menu/menu.tscn")
 
 func _on_button_pressed() -> void:
 	GameVariables.set_level(1)

@@ -35,13 +35,8 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset_level"):
 		reset_level()
 		return
-	if Input.is_action_just_pressed("change_level_up"):
-		current_level = (current_level + 1) % level_resource_paths.size()
-		load_level()
-		return
-	if Input.is_action_just_pressed("change_level_down"):
-		current_level = (current_level - 1) % level_resource_paths.size()
-		load_level()
+	if Input.is_action_just_pressed("go_back"):
+		get_tree().change_scene_to_file("res://menu/level_select.tscn")
 		return
 
 func load_level():
