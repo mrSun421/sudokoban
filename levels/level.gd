@@ -11,13 +11,6 @@ const tile_size = GameVariables.tile_size
 
 var lock_input: bool = false
 
-const level_resource_paths: Array[String] = [
-	"res://level_resources/level0.tres",
-	"res://level_resources/level1.tres",
-	"res://level_resources/level2.tres",
-	"res://level_resources/level3.tres",
-]
-
 func _ready() -> void:
 	load_level()
 
@@ -37,9 +30,7 @@ func _input(_event: InputEvent) -> void:
 		return
 
 func load_level():
-	var level_data_path = level_resource_paths[GameVariables.get_level()]
-	var level_init_data = load(level_data_path)
-	init_data = level_init_data
+	init_data = GameVariables.level_initialization_data[GameVariables.current_level]
 
 	hud.visible = false
 	camera.offset = -(get_viewport().get_visible_rect().size - Vector2(init_data.level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2

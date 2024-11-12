@@ -4,10 +4,11 @@ const level_scene = preload("res://levels/level.tscn")
 @onready var viewport_size = get_viewport().get_visible_rect().size
 
 func _ready() -> void:
-	for i in range(20):
+	for i in range(GameVariables.level_count):
+		var diff: LevelInitializationData.LevelDifficulty = GameVariables.level_initialization_data[i].level_difficulty
 		var button = Button.new()
 		button.size = Vector2i(64, 64)
-		button.position = Vector2i(int(64 * i) % int(viewport_size.x), floor(64 * i / viewport_size.x) * 64)
+		button.position = Vector2i(int(64 * i) % int(viewport_size.x), floor(64 * i / (viewport_size.x)) * 64)
 		button.pressed.connect(self._on_button_pressed.bind(i))
 		add_child(button)
 
