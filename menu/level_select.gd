@@ -1,25 +1,21 @@
 extends Control
 
+const level_scene = preload("res://levels/level.tscn")
+@onready var viewport_size = get_viewport().get_visible_rect().size
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for i in range(20):
+		var button = Button.new()
+		button.size = Vector2i(64, 64)
+		button.position = Vector2i(int(64 * i) % int(viewport_size.x), floor(64 * i / viewport_size.x) * 64)
+		button.pressed.connect(self._on_button_pressed.bind(i))
+		add_child(button)
 
+	
+func _on_button_pressed(level_val: int):
+	GameVariables.set_level(level_val)
+	get_tree().change_scene_to_packed(level_scene)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("go_back"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("go_back"):
 		get_tree().change_scene_to_file("res://menu/menu.tscn")
-
-func _on_button_pressed() -> void:
-	GameVariables.set_level(1)
-	get_tree().change_scene_to_file("res://levels/level.tscn")
-
-func _on_button_2_pressed() -> void:
-	GameVariables.set_level(2)
-	get_tree().change_scene_to_file("res://levels/level.tscn") # Replace with function body.
-
-
-func _on_button_3_pressed() -> void:
-	GameVariables.set_level(3)
-	get_tree().change_scene_to_file("res://levels/level.tscn") # Replace with function body.

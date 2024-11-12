@@ -18,7 +18,6 @@ const level_resource_paths: Array[String] = [
 	"res://level_resources/level3.tres",
 ]
 
-
 func _ready() -> void:
 	load_level()
 
