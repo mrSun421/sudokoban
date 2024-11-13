@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://rqrbj2o6elam"]
+[gd_scene load_steps=7 format=3 uid="uid://rqrbj2o6elam"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e6cek"]
 [ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/lilypad.png" id="2_u54dt"]
 [ext_resource type="Texture2D" uid="uid://b17lm4encoqkw" path="res://art_assets/frog.png" id="3_fxicl"]
+[ext_resource type="Shader" path="res://menu/menu.gdshader" id="4_muok4"]
 [ext_resource type="Texture2D" uid="uid://dod3aov3j0nun" path="res://art_assets/sudokobanmenu.png" id="4_vfc0k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aes1h"]
+render_priority = 0
+shader = ExtResource("4_muok4")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,6 +27,7 @@ offset_right = 96.0
 offset_bottom = 478.0
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_aes1h")
 layout_mode = 2
 text = "Continue"
 
