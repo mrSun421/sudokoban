@@ -1,15 +1,14 @@
 extends Node
 
 const tile_size = 32
+const level_count = 4
+var level_initialization_data: Array[LevelInitializationData]
 var current_level = -1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	for i in range(GameVariables.level_count):
+		var data = load("res://level_resources/level%d.tres" % i)
+		GameVariables.level_initialization_data.append(data)
 	
 func set_level(level: int):
 	current_level = level
