@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://rqrbj2o6elam"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e6cek"]
-[ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/lilypad.png" id="2_u54dt"]
+[ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/greenpad.png" id="2_u54dt"]
 [ext_resource type="Texture2D" uid="uid://b17lm4encoqkw" path="res://art_assets/frog.png" id="3_fxicl"]
 [ext_resource type="Shader" path="res://menu/menu.gdshader" id="4_muok4"]
 [ext_resource type="Texture2D" uid="uid://dod3aov3j0nun" path="res://art_assets/sudokobanmenu.png" id="4_vfc0k"]

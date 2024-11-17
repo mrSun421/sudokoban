@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5qn1e583k686"
-path="res://.godot/imported/lilypad.png-276025e3ac91a097c114a747f95fd53c.ctex"
+path="res://.godot/imported/greenpad.png-b005c062e83ae12837b5cd401526e4af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/lilypad.png"
-dest_files=["res://.godot/imported/lilypad.png-276025e3ac91a097c114a747f95fd53c.ctex"]
+source_file="res://art_assets/greenpad.png"
+dest_files=["res://.godot/imported/greenpad.png-b005c062e83ae12837b5cd401526e4af.ctex"]
 
 [params]
 
