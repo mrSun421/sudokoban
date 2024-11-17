@@ -2,13 +2,16 @@ extends Control
 
 const level_scene = preload("res://levels/level.tscn")
 @onready var viewport_size = get_viewport().get_visible_rect().size
+const level_select_button_scene = preload("res://menu/level_select_button.tscn")
+const horizontal_padding: int = 32
+const vertical_padding: int = 32
 
 func _ready() -> void:
 	for i in range(GameVariables.level_count):
 		var diff: LevelInitializationData.LevelDifficulty = GameVariables.level_initialization_data[i].level_difficulty
-		var button = Button.new()
-		button.size = Vector2i(64, 64)
-		button.position = Vector2i(int(64 * i) % int(viewport_size.x), floor(64 * i / (viewport_size.x)) * 64)
+		var button = level_select_button_scene.instantiate()
+		button.set_difficulty_sprite(diff)
+		button.position = Vector2(horizontal_padding, vertical_padding) + Vector2(96 * i % int(viewport_size.x - horizontal_padding * 2), floor(96 * i / (viewport_size.x - horizontal_padding * 2)) * 96)
 		button.pressed.connect(self._on_button_pressed.bind(i))
 		add_child(button)
 
