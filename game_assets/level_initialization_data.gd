@@ -1,6 +1,7 @@
 @tool
 extends Resource
 class_name LevelInitializationData
+## Resource to hold all of the data for level initialization.
 
 enum LevelDifficulty {
     EASY,
