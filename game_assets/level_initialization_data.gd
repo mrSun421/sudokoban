@@ -3,10 +3,10 @@ extends Resource
 class_name LevelInitializationData
 
 enum LevelDifficulty {
-    EASY,
-    MEDIUM,
-    HARD
-    }
+	EASY,
+	MEDIUM,
+	HARD
+	}
 
 @export var level_size: Vector2i:
 	get:

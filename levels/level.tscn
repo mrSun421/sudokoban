@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ivink"]
 [ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://game_assets/player.tscn" id="2_pdex0"]
 [ext_resource type="Texture2D" uid="uid://duqbejqhnx8q6" path="res://art_assets/background-tiles.png" id="2_t5mw4"]
-[ext_resource type="Resource" uid="uid://dmck8la6rm0i1" path="res://level_resources/level2.tres" id="2_xe7nq"]
+[ext_resource type="Resource" uid="uid://dmck8la6rm0i1" path="res://level_resources/level6.tres" id="2_xe7nq"]
 [ext_resource type="Script" path="res://levels/interactables.gd" id="3_catja"]
 [ext_resource type="Texture2D" uid="uid://y7vom6ji36l0" path="res://art_assets/goal_tiles.png" id="4_olpgq"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelInitializationData" load_steps=10 format=3 uid="uid://chxt7lfdff245"]
+[gd_resource type="Resource" script_class="LevelInitializationData" load_steps=10 format=3 uid="uid://bfvxthwbiowxd"]
 
 [ext_resource type="Script" path="res://game_assets/box_data.gd" id="1_ifged"]
 [ext_resource type="Script" path="res://game_assets/level_initialization_data.gd" id="2_ck8py"]
