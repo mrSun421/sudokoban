@@ -1,5 +1,7 @@
 extends Node2D
 class_name Interactables
+## The main script for all interacables in the game.
+## This includes the player, boxes, and walls.
 
 signal win_state
 
@@ -48,6 +50,7 @@ func _input(_event: InputEvent):
 	player.grid_position_component.grid_position = future_player_position
 
 	
+## spawns the interactables. This is called on ready by the level.
 func initialize(init_data: LevelInitializationData):
 	for wall_position in init_data.wall_positions:
 		var wall: Wall = wall_scene.instantiate()
@@ -64,6 +67,8 @@ func initialize(init_data: LevelInitializationData):
 	
 	player.grid_position_component.grid_position = init_data.initial_player_position
 
+## This checks all the boxes for proper sudoku rules.
+## In order, it checks for the squares, then the rows and columns.
 func check_win(square_data: Array[SquareData]):
 	var current_box_positions = boxes.map(func(e): return e.grid_position_component.grid_position)
 	# unique square check
@@ -122,6 +127,7 @@ func check_win(square_data: Array[SquareData]):
 	win_state.emit()
 
 
+## This gets rid of all boxes and walls in the level, and then places all interactables back into the starting positions.
 func reset_level(init_data: LevelInitializationData):
 	for i in range(init_data.initial_box_data.size()):
 		var boxdt = init_data.initial_box_data[i]
@@ -137,6 +143,7 @@ func reset_level(init_data: LevelInitializationData):
 	player.grid_position_component.grid_position = init_data.initial_player_position
 
 
+## frees all interactables in the level.
 func clear_level():
 	for box in boxes:
 		remove_child(box)
@@ -148,6 +155,7 @@ func clear_level():
 	walls = []
 
 
+## The logic for pushing/bumping into interactables.
 func handle_collision(pusher, pushee, current_direction, future_pusher_position):
 	var future_pushee_position = pushee.grid_position_component.grid_position + current_direction
 
