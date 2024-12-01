@@ -1,4 +1,5 @@
 extends Node2D
+## Script to handle loading and unloading of levels.
 
 const tile_size = GameVariables.tile_size
 
@@ -29,6 +30,7 @@ func _input(_event: InputEvent) -> void:
 		get_tree().change_scene_to_file("res://menu/level_select.tscn")
 		return
 
+## This function is immediately called on ready.
 func load_level():
 	init_data = GameVariables.level_initialization_data[GameVariables.current_level]
 
@@ -50,10 +52,12 @@ func load_level():
 func check_win():
 	interactables.check_win(init_data.square_data)
 
+## This resets the position of interactables in the level.
 func reset_level():
 	interactables.reset_level(init_data)
 	return
 
+## We lock the input, show a win screen, and then kick the player out back to level select.
 func _on_interactables_win_state():
 	lock_input = true
 	hud.visible = true
