@@ -1,44 +1,59 @@
-[gd_resource type="Resource" script_class="LevelInitializationData" load_steps=10 format=3 uid="uid://cxp4441mnoxfj"]
+[gd_resource type="Resource" script_class="LevelInitializationData" load_steps=13 format=3 uid="uid://cf746h5avw3f"]
 
 [ext_resource type="Script" path="res://game_assets/box_data.gd" id="1_j161e"]
 [ext_resource type="Script" path="res://game_assets/level_initialization_data.gd" id="2_8hbdf"]
 [ext_resource type="Script" path="res://game_assets/square_data.gd" id="3_2g710"]
 
-[sub_resource type="Resource" id="Resource_r7og6"]
-script = ExtResource("1_j161e")
-position = Vector2i(2, 2)
-value = 1
-
-[sub_resource type="Resource" id="Resource_ajwiy"]
-script = ExtResource("1_j161e")
-position = Vector2i(4, 1)
-value = 1
-
-[sub_resource type="Resource" id="Resource_4x6hj"]
+[sub_resource type="Resource" id="Resource_me2e1"]
 script = ExtResource("1_j161e")
 position = Vector2i(5, 2)
+value = 1
+
+[sub_resource type="Resource" id="Resource_dvxyd"]
+script = ExtResource("1_j161e")
+position = Vector2i(3, 3)
+value = 1
+
+[sub_resource type="Resource" id="Resource_wwwdf"]
+script = ExtResource("1_j161e")
+position = Vector2i(3, 4)
 value = 2
 
-[sub_resource type="Resource" id="Resource_1yfpd"]
+[sub_resource type="Resource" id="Resource_yx73r"]
+script = ExtResource("1_j161e")
+position = Vector2i(4, 5)
+value = 1
+
+[sub_resource type="Resource" id="Resource_xjncy"]
 script = ExtResource("1_j161e")
 position = Vector2i(5, 4)
 value = 2
 
-[sub_resource type="Resource" id="Resource_dmr7e"]
+[sub_resource type="Resource" id="Resource_l7u18"]
+script = ExtResource("1_j161e")
+position = Vector2i(6, 4)
+value = 2
+
+[sub_resource type="Resource" id="Resource_kxlwq"]
 script = ExtResource("3_2g710")
 id = 1
-positions = Array[Vector2i]([Vector2i(4, 3), Vector2i(3, 1)])
+positions = Array[Vector2i]([Vector2i(1, 6), Vector2i(2, 4)])
 
-[sub_resource type="Resource" id="Resource_x3shj"]
+[sub_resource type="Resource" id="Resource_hqh2j"]
 script = ExtResource("3_2g710")
 id = 2
-positions = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 1)])
+positions = Array[Vector2i]([Vector2i(3, 5), Vector2i(4, 3)])
+
+[sub_resource type="Resource" id="Resource_knc1a"]
+script = ExtResource("3_2g710")
+id = 3
+positions = Array[Vector2i]([Vector2i(6, 3), Vector2i(6, 5)])
 
 [resource]
 script = ExtResource("2_8hbdf")
-level_size = Vector2i(8, 7)
-initial_box_data = Array[ExtResource("1_j161e")]([SubResource("Resource_r7og6"), SubResource("Resource_ajwiy"), SubResource("Resource_4x6hj"), SubResource("Resource_1yfpd")])
-square_data = Array[ExtResource("3_2g710")]([SubResource("Resource_dmr7e"), SubResource("Resource_x3shj")])
-wall_positions = Array[Vector2i]([Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(4, 5), Vector2i(5, 6), Vector2i(6, 6), Vector2i(3, 2), Vector2i(4, 2), Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3), Vector2i(7, 4), Vector2i(7, 5), Vector2i(0, 0)])
-initial_player_position = Vector2i(1, 2)
-level_difficulty = 0
+level_size = Vector2i(11, 8)
+initial_box_data = Array[ExtResource("1_j161e")]([SubResource("Resource_me2e1"), SubResource("Resource_dvxyd"), SubResource("Resource_wwwdf"), SubResource("Resource_yx73r"), SubResource("Resource_xjncy"), SubResource("Resource_l7u18")])
+square_data = Array[ExtResource("3_2g710")]([SubResource("Resource_kxlwq"), SubResource("Resource_hqh2j"), SubResource("Resource_knc1a")])
+wall_positions = Array[Vector2i]([Vector2i(5, 0), Vector2i(6, 0), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(7, 1), Vector2i(1, 2), Vector2i(7, 2), Vector2i(0, 3), Vector2i(8, 3), Vector2i(0, 4), Vector2i(4, 4), Vector2i(8, 4), Vector2i(9, 4), Vector2i(10, 4), Vector2i(0, 5), Vector2i(2, 5), Vector2i(7, 5), Vector2i(11, 5), Vector2i(11, 6), Vector2i(0, 6), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7), Vector2i(6, 7), Vector2i(7, 7), Vector2i(8, 7), Vector2i(9, 7), Vector2i(10, 7)])
+initial_player_position = Vector2i(6, 1)
+level_difficulty = 1

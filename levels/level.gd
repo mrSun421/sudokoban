@@ -5,7 +5,7 @@ const tile_size = GameVariables.tile_size
 
 
 @export var background_tilemaplayer: TileMapLayer
-@export var hud: CanvasLayer
+@export var win_sprite: Sprite2D
 @export var interactables: Interactables
 @export var camera: Camera2D
 @export var init_data: LevelInitializationData
@@ -34,7 +34,8 @@ func _input(_event: InputEvent) -> void:
 func load_level():
 	init_data = GameVariables.level_initialization_data[GameVariables.current_level]
 
-	hud.visible = false
+	win_sprite.visible = false
+	#win_sprite.offset = -(get_viewport().get_visible_rect().size - Vector2(init_data.level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2
 	camera.offset = -(get_viewport().get_visible_rect().size - Vector2(init_data.level_size * tile_size).snapped(Vector2.ONE * tile_size)) / 2
 
 	background_tilemaplayer.clear()
@@ -60,7 +61,7 @@ func reset_level():
 ## We lock the input, show a win screen, and then kick the player out back to level select.
 func _on_interactables_win_state():
 	lock_input = true
-	hud.visible = true
+	win_sprite.visible = true
 	await get_tree().create_timer(2.0).timeout
 	lock_input = false
 
