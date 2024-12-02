@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://rqrbj2o6elam"]
+[gd_scene load_steps=8 format=3 uid="uid://rqrbj2o6elam"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e6cek"]
 [ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/greenpad.png" id="2_u54dt"]
 [ext_resource type="Texture2D" uid="uid://b17lm4encoqkw" path="res://art_assets/frog.png" id="3_fxicl"]
+[ext_resource type="Shader" path="res://menu/menu.gdshader" id="4_muok4"]
 [ext_resource type="Texture2D" uid="uid://dod3aov3j0nun" path="res://art_assets/sudokobanmenu.png" id="4_vfc0k"]
+[ext_resource type="Texture2D" uid="uid://dij0p1nj21bqk" path="res://art_assets/menubackground.png" id="6_vygon"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aes1h"]
+render_priority = 0
+shader = ExtResource("4_muok4")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,6 +28,7 @@ offset_right = 96.0
 offset_bottom = 478.0
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_aes1h")
 layout_mode = 2
 text = "Continue"
 
@@ -34,16 +41,22 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Lilypad" type="Sprite2D" parent="."]
-position = Vector2(180, 220)
+position = Vector2(180, 120)
 texture = ExtResource("2_u54dt")
 
 [node name="Frog" type="Sprite2D" parent="."]
-position = Vector2(180, 220)
+position = Vector2(180, 120)
 texture = ExtResource("3_fxicl")
 
 [node name="Sudokobanmenu" type="Sprite2D" parent="."]
-position = Vector2(350, 220)
+position = Vector2(350, 120)
 texture = ExtResource("4_vfc0k")
+
+[node name="Menubackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(323, 246)
+scale = Vector2(1.07813, 1.34)
+texture = ExtResource("6_vygon")
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

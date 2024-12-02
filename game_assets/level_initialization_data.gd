@@ -4,10 +4,10 @@ class_name LevelInitializationData
 ## Resource to hold all of the data for level initialization.
 
 enum LevelDifficulty {
-    EASY,
-    MEDIUM,
-    HARD
-    }
+	EASY,
+	MEDIUM,
+	HARD
+	}
 
 @export var level_size: Vector2i:
 	get:

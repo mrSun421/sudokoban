@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq8gr1da8bmxt"]
+[gd_scene load_steps=6 format=3 uid="uid://dq8gr1da8bmxt"]
 
 [ext_resource type="Script" path="res://menu/level_select.gd" id="1_33moq"]
+[ext_resource type="Shader" path="res://menu/level_select.gdshader" id="2_jvo6l"]
+[ext_resource type="Texture2D" uid="uid://b7cdmr34ud68b" path="res://art_assets/clouds_bg.png" id="3_0e8du"]
+[ext_resource type="Texture2D" uid="uid://be0gjv44qjmti" path="res://art_assets/glacial_mountains.png" id="4_2cwc8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctm8t"]
+shader = ExtResource("2_jvo6l")
+shader_parameter/speed = null
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -10,3 +17,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_33moq")
+
+[node name="CloudsBg" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ctm8t")
+position = Vector2(321.75, 307)
+scale = Vector2(1.67839, 1.57407)
+texture = ExtResource("3_0e8du")
+
+[node name="GlacialMountains" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(322.75, 169)
+scale = Vector2(1.66797, 2.08333)
+texture = ExtResource("4_2cwc8")
