@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rqrbj2o6elam"]
+[gd_scene load_steps=9 format=3 uid="uid://rqrbj2o6elam"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e6cek"]
 [ext_resource type="Texture2D" uid="uid://b5qn1e583k686" path="res://art_assets/greenpad.png" id="2_u54dt"]
@@ -6,12 +6,13 @@
 [ext_resource type="Shader" path="res://menu/menu.gdshader" id="4_muok4"]
 [ext_resource type="Texture2D" uid="uid://dod3aov3j0nun" path="res://art_assets/sudokobanmenu.png" id="4_vfc0k"]
 [ext_resource type="Texture2D" uid="uid://dij0p1nj21bqk" path="res://art_assets/menubackground.png" id="6_vygon"]
+[ext_resource type="Texture2D" uid="uid://bws2n2c1rvjqj" path="res://art_assets/void.png" id="7_yopwf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aes1h"]
 render_priority = 0
 shader = ExtResource("4_muok4")
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" node_paths=PackedStringArray("tutorialLayer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6cek")
+tutorialLayer = NodePath("TutorialLayer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -27,14 +29,14 @@ offset_top = 377.0
 offset_right = 96.0
 offset_bottom = 478.0
 
-[node name="Continue" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_aes1h")
 layout_mode = 2
-text = "Continue"
+text = "Start"
 
-[node name="NewGame" type="Button" parent="VBoxContainer"]
+[node name="How to Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "New Game"
+text = "How to Play"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -58,5 +60,35 @@ position = Vector2(323, 246)
 scale = Vector2(1.07813, 1.34)
 texture = ExtResource("6_vygon")
 
-[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLayer"]
+modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(320, 240)
+scale = Vector2(22, 17)
+texture = ExtResource("7_yopwf")
+
+[node name="TutorialText" type="RichTextLabel" parent="TutorialLayer"]
+modulate = Color(1, 0.933333, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -112.0
+offset_right = 224.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]
+Use the arrow keys to move.
+\"R\" to reset level.
+\"S\" to show background tiles.
+[/center]"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/How to Play" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
