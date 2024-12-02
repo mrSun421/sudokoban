@@ -1,7 +1,7 @@
 extends Node
 
 const tile_size = 32
-const level_count = 10
+const level_count = 11
 var level_initialization_data: Array[LevelInitializationData]
 var current_level = -1
 

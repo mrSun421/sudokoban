@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ene55pesmso4"]
+[gd_scene load_steps=11 format=3 uid="uid://ene55pesmso4"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ivink"]
 [ext_resource type="PackedScene" uid="uid://l67hhlq58isn" path="res://game_assets/player.tscn" id="2_pdex0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dmck8la6rm0i1" path="res://level_resources/level6.tres" id="2_xe7nq"]
 [ext_resource type="Script" path="res://levels/interactables.gd" id="3_catja"]
 [ext_resource type="Texture2D" uid="uid://y7vom6ji36l0" path="res://art_assets/goal_tiles.png" id="4_olpgq"]
+[ext_resource type="Texture2D" uid="uid://jjgfrtuavruk" path="res://art_assets/level_background.png" id="7_xb5gc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u50ey"]
 texture = ExtResource("2_t5mw4")
@@ -59,5 +60,11 @@ player = NodePath("Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="LevelBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(210, 172)
+scale = Vector2(1.39359, 1.30625)
+texture = ExtResource("7_xb5gc")
 
 [connection signal="win_state" from="Interactables" to="." method="_on_interactables_win_state"]
